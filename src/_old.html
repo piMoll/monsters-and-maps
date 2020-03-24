@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css" type="text/css">
+    <style>
+        .map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/build/ol.js"></script>
+    <title>OpenLayers example</title>
+</head>
+<body>
+<h2>My Map</h2>
+<div id="map" class="map"></div>
+<script type="text/javascript">
+
+
+    var extent = [0, 0, 1200, 1200];
+    var projection = new ol.proj.Projection({
+        code: 'sample',
+        units: 'pixels',
+        extent: extent
+    });
+
+
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Image({
+                source: new ol.source.ImageStatic({
+                    url: './assets/samplemap.jpg',
+                    projection: projection,
+                    imageExtent: extent
+                })
+            })
+        ],
+        target: 'map',
+        view: new ol.View({
+            projection: projection,
+            center: [600, 600],
+            zoom: 2,
+            maxZoom: 8
+        })
+    });
+</script>
+</body>
+</html>
